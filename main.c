@@ -1,62 +1,78 @@
-#define <stdio.h>
-#define <stdlib.h>
+#include <stdio.h>
+
+#include <stdlib.h>
 
 //Struct?
-typedef struct Buku{
+typedef struct Buku {
   int no_buku;
   char jenis_buku[50]
   char judul_buku[50];
   int halaman;
   float harga;
-}Buku;
-  
+}
+Buku;
+
 int main(void) {
   //Tes
 }
 
 void menu(void) {
-int pilihan;
+  int pilihan;
+  menu:
+    printf("Program Perpustakaan Universitas Udayana");
+  scanf("%*[^\n]");
+  fflush(stdin);
 
-menu:
-printf("Program Perpustakaan Universitas Udayana");
-scanf("%*[^\n]");
-fflush(stdin);
-
-printf("Menu program \n");
-printf("1. Add new book\n");
-printf("2. Delete book\n");
-printf("3. Search for book\n");
-printf("4. Peminjaman\n");
-printf("5. Pengembalian\n");
-printf("Masukan pilihan: ");
-scanf("%i", & pilihan);
-fflush(stdin);
+  printf("Menu program \n");
+  printf("1. Add new book\n");
+  printf("2. Delete book\n");
+  printf("3. Search for book\n");
+  printf("4. Peminjaman\n");
+  printf("5. Pengembalian\n");
+  printf("6. Exit\n");
+  printf("Masukan pilihan: ");
+  scanf("%i", & pilihan);
+  fflush(stdin);
 }
 switch (pilihan) {
-  case 1:
-    //Fungsiadd;
-    break;
-  case 2:
-    //Fungsidelete;
-    break;
+case 1:
+  //tambah_buku();
+  break;
+case 2:
+  //delete_buku();
+  break;
 case 3:
-    //Fungsisearch;
-    break;
+  //cari_buku();
+  break;
 case 4:
-//Fungsiminjem;
-break;
+  //peminjaman();
+  break;
 case 5:
-//Fungsipengembalian;
-break;
-  default:
-    goto golongan;
-  }
+  //pengembalian();
+  break;
+case 6:
+  exit(0);
+  break;
+default:
+  goto menu;
+}
 
 void tambah_buku(void) {
   //Fungsi nambahin buku
 }
 
 void delete_buku(void) {
-   //Fungsi delete buku
+  //Fungsi delete buku
 }
 
+void cari_buku(void) {
+  //Fungsi cari buku
+}
+
+void peminjaman(void) {
+  //Fungsi peminjaman
+}
+
+void pengembalian(void) {
+  //Fungsi pengembalian
+}
