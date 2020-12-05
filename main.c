@@ -7,6 +7,7 @@ typedef struct Buku {
   int no_buku;
   char jenis_buku[50];
   char judul_buku[50];
+  char penulis[50];
   int halaman;
   float harga;
 }
@@ -59,6 +60,17 @@ default:
 
 void tambah_buku(void) {
   //Fungsi nambahin buku
+  printf("Masukkan judul buku   : \n");
+  scanf ("%[^\n]%*c", judul_buku);
+  printf("Masukkan jenis buku   : \n");
+  scanf ("%[^\n]%*c", jenis_buku);
+  printf("Masukkan nomor buku   : \n");
+  scanf ("%d", &no_buku);
+  printf("Masukkan penulis buku : \n");
+  scanf ("%[^\n]%*c", penulis);
+  
+  //Validasi input data
+  
 }
 
 void delete_buku(void) {
