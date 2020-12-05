@@ -5,7 +5,7 @@
 //Struct?
 typedef struct Buku {
   int no_buku;
-  char jenis_buku[50]
+  char jenis_buku[50];
   char judul_buku[50];
   int halaman;
   float harga;
