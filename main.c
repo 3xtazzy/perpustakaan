@@ -2,16 +2,26 @@
 
 #include <stdlib.h>
 
+#define MAKS_JENIS_BUKU 50
+#define MAKS_JUDUL_BUKU 50
+#define MAKS_NAMA_PENULIS 50
+
+//Deklarasi fungsi untuk meminimalisir error
+void tambah_buku(void);
+void delete_buku(void);
+void cari_buku(void);
+void peminjaman(void);
+void pengembalian(void);
+
 //Struct?
 typedef struct Buku {
-  int no_buku;
+  int kode_buku;
   char jenis_buku[50];
   char judul_buku[50];
   char penulis[50];
   int halaman;
   float harga;
-}
-Buku;
+} Buku;
 
 int main(void) {
   //Tes
