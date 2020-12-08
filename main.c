@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include <stdlib.h>
 
 #define MAKS_JENIS_BUKU 50
@@ -6,6 +7,7 @@
 #define MAKS_NAMA_PENULIS 50
 
 //Deklarasi fungsi untuk meminimalisir error
+void menu(void);
 void tambah_buku(void);
 void delete_buku(void);
 void cari_buku(void);
@@ -14,13 +16,12 @@ void pengembalian(void);
 
 //Struct?
 typedef struct Buku {
-  int kode_buku;
+  unsigned kode_buku, halaman, harga;
   char jenis_buku[50];
   char judul_buku[50];
   char penulis[50];
-  int halaman;
-  float harga;
-} Buku;
+}
+Buku;
 
 int main(void) {
   //Tes
@@ -30,10 +31,9 @@ int main(void) {
 
 void menu(void) {
   int pilihan;
-  menu:
-
-  system("clear");
-    printf("Program Perpustakaan Universitas Udayana");
+awal:
+    system("cls");
+  printf("Program Perpustakaan Universitas Udayana");
   scanf("%*[^\n]");
   fflush(stdin);
 
@@ -48,73 +48,78 @@ void menu(void) {
   scanf("%i", & pilihan);
   fflush(stdin);
 
-switch (pilihan) {
-case 1:
-  tambah_buku();
-  break;
-case 2:
-  delete_buku();
-  break;
-case 3:
-  cari_buku();
-  break;
-case 4:
-  peminjaman();
-  break;
-case 5:
-  pengembalian();
-  break;
-case 6:
-  exit(0);
-  break;
-default:
-  printf("Masukan input yang benar!");
-  goto menu;
-}
+  switch (pilihan) {
+  case 1:
+    tambah_buku();
+    break;
+  case 2:
+    delete_buku();
+    break;
+  case 3:
+    cari_buku();
+    break;
+  case 4:
+    peminjaman();
+    break;
+  case 5:
+    pengembalian();
+    break;
+  case 6:
+    exit(0);
+    break;
+  default:
+    printf("Masukan input yang benar!");
+    goto awal;
+  }
 }
 
 void tambah_buku(void) {
-  Buku tambahBuku = {0}; //Memanggil ke struct ke fungsi
-  FILE *fp; //filepointer
-  fp = fopen("Buku.bin", "ab+");
+  Buku tambahBuku = {
+    0
+  }; //Memanggil ke struct ke fungsi
+  FILE * filePointer; //filepointer
+  filePointer = fopen("Buku.bin", "ab+");
 
-
+  system("cls");
   //Fungsi nambahin buku
-  start:
   printf("Masukan detail buku dibawah...\n");
   printf("Kode buku   : ");
   fflush(stdin);
-  scanf ("%u", &tambahBuku.kode_buku);
+  scanf("%u", & tambahBuku.kode_buku);
   printf("Nama buku   : ");
   fflush(stdin);
-  fgets(tambahBuku.judul_buku,MAKS_JUDUL_BUKU,stdin);
+  fgets(tambahBuku.judul_buku, MAKS_JUDUL_BUKU, stdin);
   printf("Penulis buku: ");
   fflush(stdin);
-  fgets(tambahBuku.penulis,MAKS_NAMA_PENULIS,stdin);
+  fgets(tambahBuku.penulis, MAKS_NAMA_PENULIS, stdin);
   printf("Halaman     : ");
-  scanf("%u", &tambahBuku.halaman);
+  scanf("%u", & tambahBuku.halaman);
   printf("Harga       : ");
-  scanf("%u", &tambahBuku.harga);
+  scanf("%u", & tambahBuku.harga);
 
   //Validasi input data
+
+  //Write ke file
+  fwrite( & tambahBuku, sizeof(tambahBuku), 1, filePointer);
+  fclose(filePointer);
 }
 
 void delete_buku(void) {
   //Fungsi delete buku
-	printf("Test");
+  printf("Test");
 }
 
 void cari_buku(void) {
   //Fungsi cari buku
-	printf("Test");
+  printf("Test");
 }
 
 void peminjaman(void) {
   //Fungsi peminjaman
-	printf("Test");
+  printf("Test");
 }
 
 void pengembalian(void) {
   //Fungsi pengembalian
-	printf("Test");
+  printf("Test");
 }
