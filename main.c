@@ -15,12 +15,12 @@ void pengembalian(void);
 
 //Struct?
 typedef struct Buku {
-  int kode_buku;
-  char jenis_buku[50];
-  char judul_buku[50];
-  char penulis[50];
-  int halaman;
-  float harga;
+  unsigned int kode_buku;
+  char jenis_buku[MAKS_JENIS_BUKU];
+  char judul_buku[MAKS_JUDUL_BUKU];
+  char penulis[MAKS_NAMA_PENULIS];
+  unsigned int halaman;
+  unsigned int harga;
 } Buku;
 
 int main(void) {
