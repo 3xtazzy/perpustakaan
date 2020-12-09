@@ -31,8 +31,9 @@ int main(void) {
 
 void menu(void) {
   int pilihan;
-awal:
-    system("cls");
+  awal:
+  system("cls");
+  system("color 80")
   printf("Program Perpustakaan Universitas Udayana");
   scanf("%*[^\n]");
   fflush(stdin);
