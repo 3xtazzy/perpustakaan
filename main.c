@@ -33,7 +33,7 @@ void menu(void) {
   int pilihan;
   awal:
   system("cls");
-  system("color 80")
+  system("color 80");
   printf("Program Perpustakaan Universitas Udayana");
   scanf("%*[^\n]");
   fflush(stdin);
