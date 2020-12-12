@@ -34,7 +34,11 @@ void menu(void) {
   awal:
   system("cls");
   system("color 80");
-  printf("Program Perpustakaan Universitas Udayana");
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
   scanf("%*[^\n]");
   fflush(stdin);
 
