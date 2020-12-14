@@ -6,8 +6,57 @@
 #define MAKS_JUDUL_BUKU 50
 #define MAKS_NAMA_PENULIS 50
 
-//Deklarasi fungsi untuk meminimalisir error
-void menu(void);
+void menu(void) {
+  int pilihan;
+  awal:
+  system("cls");
+  system("color 80");
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                     <<< Selamat Berkunjung :D >>>                          ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");  
+  scanf("%*[^\n]");
+  fflush(stdin);
+
+  printf("Menu program \n");
+  printf("1. Add new book\n");
+  printf("2. Delete book\n");
+  printf("3. Search for book\n");
+  printf("4. Peminjaman\n");
+  printf("5. Pengembalian\n");
+  printf("6. Exit\n");
+  printf("Masukan pilihan: ");
+  scanf("%i", & pilihan);
+  fflush(stdin);
+
+  switch (pilihan) {
+  case 1:
+    tambah_buku();
+    break;
+  case 2:
+    delete_buku();
+    break;
+  case 3:
+    cari_buku();
+    break;
+  case 4:
+    peminjaman();
+    break;
+  case 5:
+    pengembalian();
+    break;
+  case 6:
+    exit(0);
+    break;
+  default:
+    printf("Masukan input yang benar!");
+    goto awal;
+  }
+}
 void tambah_buku(void) {
   Buku tambahBuku = {
     0
@@ -119,56 +168,4 @@ int main(void) {
   //Tes
   menu();
   return 0;
-}
-
-void menu(void) {
-  int pilihan;
-  awal:
-  system("cls");
-  system("color 80");
-  printf("\t\t\t===========================================================================");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t=========================================================================== ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                     <<< Selamat Berkunjung :D >>>                          ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");  
-  scanf("%*[^\n]");
-  fflush(stdin);
-
-  printf("Menu program \n");
-  printf("1. Add new book\n");
-  printf("2. Delete book\n");
-  printf("3. Search for book\n");
-  printf("4. Peminjaman\n");
-  printf("5. Pengembalian\n");
-  printf("6. Exit\n");
-  printf("Masukan pilihan: ");
-  scanf("%i", & pilihan);
-  fflush(stdin);
-
-  switch (pilihan) {
-  case 1:
-    tambah_buku();
-    break;
-  case 2:
-    delete_buku();
-    break;
-  case 3:
-    cari_buku();
-    break;
-  case 4:
-    peminjaman();
-    break;
-  case 5:
-    pengembalian();
-    break;
-  case 6:
-    exit(0);
-    break;
-  default:
-    printf("Masukan input yang benar!");
-    goto awal;
-  }
 }
