@@ -8,11 +8,100 @@
 
 //Deklarasi fungsi untuk meminimalisir error
 void menu(void);
-void tambah_buku(void);
-void delete_buku(void);
-void cari_buku(void);
-void peminjaman(void);
-void pengembalian(void);
+void tambah_buku(void) {
+  Buku tambahBuku = {
+    0
+  }; //Memanggil ke struct ke fungsi
+  FILE * filePointer; //filepointer
+  filePointer = fopen("Buku.bin", "ab+");
+
+  system("cls");
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                        <<< Add New Book Menu >>>                           ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  
+  //Fungsi nambahin buku
+  printf("Masukan detail buku dibawah...\n");
+  printf("Kode buku   : ");
+  fflush(stdin);
+  scanf("%u", & tambahBuku.kode_buku);
+  printf("Nama buku   : ");
+  fflush(stdin);
+  fgets(tambahBuku.judul_buku, MAKS_JUDUL_BUKU, stdin);
+  printf("Penulis buku: ");
+  fflush(stdin);
+  fgets(tambahBuku.penulis, MAKS_NAMA_PENULIS, stdin);
+  printf("Jenis Buku  : ");
+  fflush(stdin);
+  fgets(tambahBuku.jenis_buku, MAKS_JENIS_BUKU, stdin);
+  printf("Halaman     : ");
+  scanf("%u", & tambahBuku.halaman);
+  printf("Harga       : ");
+  scanf("%u", & tambahBuku.harga);
+
+  //Validasi input data
+
+  //Write ke file
+  fwrite( & tambahBuku, sizeof(tambahBuku), 1, filePointer);
+  fclose(filePointer);
+}
+void delete_buku(void) {
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                         <<< Delete Book Menu >>>                           ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  
+  //Fungsi delete buku
+  printf("Test");
+}
+void cari_buku(void) {
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                      <<< Search For Book Menu >>>                          ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  
+  //Fungsi cari buku
+  printf("Test");
+}
+void peminjaman(void) {
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                         <<< Menu Peminjaman >>>                            ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  
+  //Fungsi peminjaman
+  printf("Test");
+}
+void pengembalian(void) {
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                        <<< Menu Pengembalian >>>                           ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  
+  //Fungsi pengembalian
+  printf("Test");
+}
 
 //Struct?
 typedef struct Buku {
@@ -82,103 +171,4 @@ void menu(void) {
     printf("Masukan input yang benar!");
     goto awal;
   }
-}
-
-void tambah_buku(void) {
-  Buku tambahBuku = {
-    0
-  }; //Memanggil ke struct ke fungsi
-  FILE * filePointer; //filepointer
-  filePointer = fopen("Buku.bin", "ab+");
-
-  system("cls");
-  printf("\t\t\t===========================================================================");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t=========================================================================== ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                        <<< Add New Book Menu >>>                           ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
-  //Fungsi nambahin buku
-  printf("Masukan detail buku dibawah...\n");
-  printf("Kode buku   : ");
-  fflush(stdin);
-  scanf("%u", & tambahBuku.kode_buku);
-  printf("Nama buku   : ");
-  fflush(stdin);
-  fgets(tambahBuku.judul_buku, MAKS_JUDUL_BUKU, stdin);
-  printf("Penulis buku: ");
-  fflush(stdin);
-  fgets(tambahBuku.penulis, MAKS_NAMA_PENULIS, stdin);
-  printf("Jenis Buku  : ");
-  fflush(stdin);
-  fgets(tambahBuku.jenis_buku, MAKS_JENIS_BUKU, stdin);
-  printf("Halaman     : ");
-  scanf("%u", & tambahBuku.halaman);
-  printf("Harga       : ");
-  scanf("%u", & tambahBuku.harga);
-
-  //Validasi input data
-
-  //Write ke file
-  fwrite( & tambahBuku, sizeof(tambahBuku), 1, filePointer);
-  fclose(filePointer);
-}
-
-void delete_buku(void) {
-  printf("\t\t\t===========================================================================");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t=========================================================================== ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                         <<< Delete Book Menu >>>                           ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
-  //Fungsi delete buku
-  printf("Test");
-}
-
-void cari_buku(void) {
-  printf("\t\t\t===========================================================================");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t=========================================================================== ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                      <<< Search For Book Menu >>>                          ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
-  //Fungsi cari buku
-  printf("Test");
-}
-
-void peminjaman(void) {
-  printf("\t\t\t===========================================================================");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t=========================================================================== ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                         <<< Menu Peminjaman >>>                            ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
-  //Fungsi peminjaman
-  printf("Test");
-}
-
-void pengembalian(void) {
-  printf("\t\t\t===========================================================================");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
-  printf("\n\t\t\t------------                                                   ------------ ");
-  printf("\n\t\t\t=========================================================================== ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                        <<< Menu Pengembalian >>>                           ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
-  //Fungsi pengembalian
-  printf("Test");
 }
