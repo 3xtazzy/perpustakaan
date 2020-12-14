@@ -16,12 +16,15 @@ void pengembalian(void);
 
 //Struct?
 typedef struct Buku {
-  unsigned kode_buku, halaman, harga;
-  char jenis_buku[50];
-  char judul_buku[50];
-  char penulis[50];
-}
-Buku;
+  int kode_buku;
+  char jenis_buku[MAKS_JENIS_BUKU];
+  char judul_buku[MAKS_JUDUL_BUKU];
+  char penulis[MAKS_PENULIS_BUKU];
+  int halaman;
+  float harga;
+} Buku;
+
+
 
 int main(void) {
   //Tes
@@ -109,6 +112,9 @@ void tambah_buku(void) {
   printf("Penulis buku: ");
   fflush(stdin);
   fgets(tambahBuku.penulis, MAKS_NAMA_PENULIS, stdin);
+  printf("Jenis Buku  : ");
+  fflush(stdin);
+  fgets(tambahBuku.jenis_buku, MAKS_JENIS_BUKU, stdin);
   printf("Halaman     : ");
   scanf("%u", & tambahBuku.halaman);
   printf("Harga       : ");
