@@ -57,7 +57,7 @@ void menu(void) {
   scanf("%*[^\n]");
   fflush(stdin);
 
-  printf("Menu program \n");
+  printf("\nMenu program \n");
   printf("1. Add new book\n");
   printf("2. Delete book\n");
   printf("3. Search for book\n");
@@ -114,7 +114,7 @@ void tambah_buku(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi nambahin buku
-  printf("Masukan detail buku dibawah...\n");
+  printf("\nMasukan detail buku dibawah...\n");
   printf("Kode buku   : ");
   fflush(stdin);
   scanf("%u", & tambahBuku.kode_buku);
@@ -170,7 +170,7 @@ void cari_buku(void) {
   FILE * filePointer; //filepointer
   filePointer = fopen("Buku.bin", "rb");
   printf("Test");
-  printf("Masukkan nama buku untuk dicari :");
+  printf("\nMasukkan nama buku untuk dicari :");
   fflush(stdin);
   fgets(judulBuku,MAKS_JUDUL_BUKU, stdin);
 
