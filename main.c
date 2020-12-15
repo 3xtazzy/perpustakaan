@@ -148,6 +148,7 @@ void delete_buku(void) {
   printf("Test");
 }
 void cari_buku(void) {
+  int ketemu = 0;
   printf("\t\t\t===========================================================================");
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
@@ -158,7 +159,33 @@ void cari_buku(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi cari buku
+  Buku tambahBuku = {
+    0
+  }; //Memanggil ke struct ke fungsi
+  char judulBuku[MAKS_JUDUL_BUKU];
+  FILE * filePointer; //filepointer
+  filePointer = fopen("Buku.bin", "rb");
   printf("Test");
+  printf("Masukkan nama buku untuk dicari :");
+  fflush(stdin);
+  fgets(judulBuku,MAKS_JUDUL_BUKU, stdin);
+
+  while(fread(&tambahBuku, sizeof(tambahBuku),1, filePointer)){
+    if(!strcmp(tambahBuku.judul_buku,judulBuku)){
+        ketemu = 1;
+        break;
+    }
+  }
+  if(ketemu == 0){
+    printf("Kode Buku    : %u", tambahBuku.kode_buku);
+    printf("Judul Buku   : %s", tambahBuku.judul_buku);
+    printf("Penulis Buku : %s", tambahBuku.penulis);
+  }else{
+    printf("Buku tidak ditemukan");
+  }
+  fclose(filePointer);
+  printf("Tekan tombol enter untuk kembali ke menu utama");
+  getchar();
 }
 void peminjaman(void) {
   printf("\t\t\t===========================================================================");
