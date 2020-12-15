@@ -61,9 +61,10 @@ void menu(void) {
   printf("1. Add new book\n");
   printf("2. Delete book\n");
   printf("3. Search for book\n");
-  printf("4. Peminjaman\n");
-  printf("5. Pengembalian\n");
-  printf("6. Exit\n");
+  printf("4. View all book\n");
+  printf("5. Peminjaman\n");
+  printf("6. Pengembalian\n");
+  printf("7. Exit\n");
   printf("Masukan pilihan: ");
   scanf("%i", & pilihan);
   fflush(stdin);
@@ -79,12 +80,15 @@ void menu(void) {
     cari_buku();
     break;
   case 4:
-    peminjaman();
+    lihat_buku();
     break;
   case 5:
-    pengembalian();
+    peminjaman();
     break;
   case 6:
+    pengembalian();
+    break;
+  case 7:
     exit(0);
     break;
   default:
@@ -227,7 +231,7 @@ void lihat_buku(void) {
   //Fungsi lihat buku
   int ketemu = 0;
   char judulBuku[MAKS_JUDUL_BUKU] = {0};
-  Buku tambahBuku = 
+  Buku tambahBuku = {
     0
   }; //Memanggil ke struct ke fungsi
   FILE *filePointer = NULL;
@@ -240,7 +244,7 @@ void lihat_buku(void) {
       printf("\t\t\tJenis Buku = %s", tambahBuku.jenis_buku);
       printf("\t\t\tHalaman = %u", tambahBuku.halaman);
       printf("\n\t\t\tHarga = Rp%.3f", tambahBuku.harga);
-      printf("\t\t\t");
+      printf("\n\t\t\t");
       ketemu = 1;
    }
   fclose(filePointer);
@@ -251,12 +255,6 @@ void lihat_buku(void) {
   fflush(stdin);
   getchar();
 }
-int main(void) {
-  //Tes
-  login();
-  return 0;
-}
-
 int main(void) {
   //Tes
   login();
