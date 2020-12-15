@@ -1,11 +1,46 @@
 #include <stdio.h>
-
+#include <string.h>
 #include <stdlib.h>
 
 #define MAKS_JENIS_BUKU 50
 #define MAKS_JUDUL_BUKU 50
 #define MAKS_NAMA_PENULIS 50
+#define MAKS_USER 20
+#define MAKS_PASS 20
 
+//Struct?
+typedef struct Buku {
+  int kode_buku;
+  char jenis_buku[MAKS_JENIS_BUKU];
+  char judul_buku[MAKS_JUDUL_BUKU];
+  char penulis[MAKS_NAMA_PENULIS];
+  int halaman;
+  float harga;
+} Buku;
+
+void login(void) {
+	char user[MAKS_USER] = "apausernya";
+	char pass[MAKS_PASS] = "apapassnya";
+	char inputUser[MAKS_USER], inputPass[MAKS_PASS];
+	int result;
+	do {
+	printf("Masukan Username : ");
+	    scanf("%s", inputUser);
+	    printf("Masukan Password : ");
+	    scanf("%s", inputPass);
+	    if(strcmp(user,inputUser)==0 && strcmp(pass, inputPass)==0){
+	    	result = 0;
+	        printf("Akses diterima. Selamat Datang\n");
+	        system("pause");
+	        menu();
+	    }
+	    else{
+	    	 result = 1;
+	         printf("Username dan Password tidak match\n");
+	         system("cls");
+	    }
+	} while (result != 0);
+}
 void menu(void) {
   int pilihan;
   awal:
@@ -18,7 +53,7 @@ void menu(void) {
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   printf("\n\t\t\t                     <<< Selamat Berkunjung :D >>>                          ");
-  printf("\n\t\t\t--------------------------------------------------------------------------- ");  
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
   scanf("%*[^\n]");
   fflush(stdin);
 
@@ -73,7 +108,7 @@ void tambah_buku(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   printf("\n\t\t\t                        <<< Add New Book Menu >>>                           ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
+
   //Fungsi nambahin buku
   printf("Masukan detail buku dibawah...\n");
   printf("Kode buku   : ");
@@ -108,7 +143,7 @@ void delete_buku(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   printf("\n\t\t\t                         <<< Delete Book Menu >>>                           ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
+
   //Fungsi delete buku
   printf("Test");
 }
@@ -121,7 +156,7 @@ void cari_buku(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   printf("\n\t\t\t                      <<< Search For Book Menu >>>                          ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
+
   //Fungsi cari buku
   printf("Test");
 }
@@ -134,7 +169,7 @@ void peminjaman(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   printf("\n\t\t\t                         <<< Menu Peminjaman >>>                            ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
+
   //Fungsi peminjaman
   printf("Test");
 }
@@ -147,25 +182,13 @@ void pengembalian(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   printf("\n\t\t\t                        <<< Menu Pengembalian >>>                           ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  
+
   //Fungsi pengembalian
   printf("Test");
 }
 
-//Struct?
-typedef struct Buku {
-  int kode_buku;
-  char jenis_buku[MAKS_JENIS_BUKU];
-  char judul_buku[MAKS_JUDUL_BUKU];
-  char penulis[MAKS_PENULIS_BUKU];
-  int halaman;
-  float harga;
-} Buku;
-
-
-
 int main(void) {
   //Tes
-  menu();
+  login();
   return 0;
 }
