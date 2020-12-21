@@ -192,9 +192,12 @@ void cari_buku(void) {
     }
   }
   if(ketemu == 0){
-    printf("Kode Buku    : %u", tambahBuku.kode_buku);
-    printf("Judul Buku   : %s", tambahBuku.judul_buku);
-    printf("Penulis Buku : %s", tambahBuku.penulis);
+    printf("\n\t\t\tKode Buku = %u", tambahBuku.kode_buku);
+    printf("\n\t\t\tNama Buku = %s", tambahBuku.judul_buku);
+    printf("\t\t\tPenulis = %s", tambahBuku.penulis);
+    printf("\t\t\tJenis Buku = %s", tambahBuku.jenis_buku);
+    printf("\t\t\tHalaman = %u", tambahBuku.halaman);
+    printf("\n\t\t\tHarga = Rp%.3f", tambahBuku.harga);
   }else{
     printf("Buku tidak ditemukan");
   }
