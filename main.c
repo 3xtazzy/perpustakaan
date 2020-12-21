@@ -199,10 +199,10 @@ void cari_buku(void) {
     printf("\t\t\tHalaman = %u", tambahBuku.halaman);
     printf("\n\t\t\tHarga = Rp%.3f", tambahBuku.harga);
   }else{
-    printf("Buku tidak ditemukan");
+    printf("\n\t\t\tBuku tidak ditemukan\n");
   }
   fclose(filePointer);
-  printf("Tekan tombol enter untuk kembali ke menu utama");
+  printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
   getchar();
   system("cls");
 }
