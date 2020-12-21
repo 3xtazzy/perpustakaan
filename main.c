@@ -66,7 +66,7 @@ void menu(void) {
   fflush(stdin);
 
   printf("\nMenu program \n");
-  printf("1. Add new book\n");
+  printf("1. Menambahkan buku\n");
   printf("2. Delete book\n");
   printf("3. Search for book\n");
   printf("4. View all book\n");
