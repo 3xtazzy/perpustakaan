@@ -180,8 +180,8 @@ void cari_buku(void) {
   char judulBuku[MAKS_JUDUL_BUKU];
   FILE * filePointer; //filepointer
   filePointer = fopen("Buku.bin", "rb");
-  printf("Test");
-  printf("\nMasukkan nama buku untuk dicari :");
+  printf("\n");
+  printf("\n\t\t\tMasukkan nama buku untuk dicari : ");
   fflush(stdin);
   fgets(judulBuku,MAKS_JUDUL_BUKU, stdin);
 
