@@ -49,11 +49,9 @@ void login(void) {
 }
 void menu(void) {
   int pilihan;
-  awal:
+  do {
   system("cls");
   system("color B0");
-  int a;
-  for(a=0; a<6; a++){
   printf("\t\t\t===========================================================================");
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
@@ -64,7 +62,6 @@ void menu(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   scanf("%*[^\n]");
   fflush(stdin);
-
   printf("\nMenu program \n");
   printf("1. Menambahkan buku\n");
   printf("2. Menghapus buku\n");
@@ -101,9 +98,8 @@ void menu(void) {
     break;
   default:
     printf("Masukan input yang benar!");
-    goto awal;
   }
-}
+} while (pilihan != 7);
 }
 void tambah_buku(void) {
   Buku tambahBuku = {
