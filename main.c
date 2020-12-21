@@ -67,8 +67,8 @@ void menu(void) {
 
   printf("\nMenu program \n");
   printf("1. Menambahkan buku\n");
-  printf("2. Delete book\n");
-  printf("3. Search for book\n");
+  printf("2. Menghapus buku\n");
+  printf("3. Mencari buku\n");
   printf("4. View all book\n");
   printf("5. Peminjaman\n");
   printf("6. Pengembalian\n");
