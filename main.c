@@ -69,10 +69,10 @@ void menu(void) {
   printf("1. Menambahkan buku\n");
   printf("2. Menghapus buku\n");
   printf("3. Mencari buku\n");
-  printf("4. View all book\n");
+  printf("4. Melihat semua buku\n");
   printf("5. Peminjaman\n");
   printf("6. Pengembalian\n");
-  printf("7. Exit\n");
+  printf("7. Kembali\n");
   printf("Masukan pilihan: ");
   scanf("%i", & pilihan);
   fflush(stdin);
