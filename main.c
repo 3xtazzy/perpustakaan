@@ -249,8 +249,7 @@ void lihat_buku(void) {
   Buku tambahBuku = {
     0
   }; //Memanggil ke struct ke fungsi
-  FILE *filePointer = NULL;
-  int status = 0;
+  FILE *filePointer;
   filePointer = fopen("Buku.bin","rb");
   while(fread (&tambahBuku, sizeof(tambahBuku), 1, filePointer)){
       printf("\n\t\t\tKode Buku = %u", tambahBuku.kode_buku);
