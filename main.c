@@ -51,7 +51,9 @@ void menu(void) {
   int pilihan;
   awal:
   system("cls");
-  system("color 80");
+  system("color B0");
+  int a;
+  for(a=0; a<6; a++){
   printf("\t\t\t===========================================================================");
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
@@ -102,6 +104,7 @@ void menu(void) {
     goto awal;
   }
 }
+}
 void tambah_buku(void) {
   Buku tambahBuku = {
     0
@@ -143,6 +146,7 @@ void tambah_buku(void) {
   //Write ke file
   fwrite( & tambahBuku, sizeof(tambahBuku), 1, filePointer);
   fclose(filePointer);
+  system("cls");
 }
 void delete_buku(void) {
   printf("\t\t\t===========================================================================");
@@ -158,6 +162,7 @@ void delete_buku(void) {
   printf("Test");
 }
 void cari_buku(void) {
+  system("cls");
   int ketemu = 0;
   printf("\t\t\t===========================================================================");
   printf("\n\t\t\t------------                                                   ------------ ");
@@ -196,6 +201,7 @@ void cari_buku(void) {
   fclose(filePointer);
   printf("Tekan tombol enter untuk kembali ke menu utama");
   getchar();
+  system("cls");
 }
 void peminjaman(void) {
   printf("\t\t\t===========================================================================");
@@ -260,6 +266,7 @@ void lihat_buku(void) {
   printf("\n\n\t\t\tPress enter to go to main menu.....");
   fflush(stdin);
   getchar();
+  system("cls");
 }
 int main(void) {
   //Tes
