@@ -19,14 +19,28 @@ typedef struct Buku {
 } Buku;
 
 void login(void) {
+	int j;
+        char a[25] = " <<< LOGIN >>> ";
 	system("color F2");
 	char user[MAKS_USER] = "apausernya";
 	char pass[MAKS_PASS] = "apapassnya";
 	char inputUser[MAKS_USER], inputPass[MAKS_PASS];
 	int result;
-	printf("\n\t\t\t=========================================================================== ");
-        printf("\n\t\t\t                              <<< LOGIN >>>                                 ");
-        printf("\n\t\t\t=========================================================================== ");
+	printf("\n\t\t\t===========================================================================");
+	printf("\n\t\t\t");
+	for(j=0;j<30;j++){
+        Sleep(50);
+        printf("*");
+	}
+	for(j=0;j<15;j++){
+        Sleep(50);
+        printf("%c", a[j]);
+	}
+	for(j=0;j<30;j++){
+        Sleep(50);
+        printf("*");
+	}
+        printf("\n\t\t\t===========================================================================");
         printf("\n");
         printf("\n");
 	do {
