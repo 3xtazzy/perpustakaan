@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <windows.h>
 
 #define MAKS_JENIS_BUKU 50
 #define MAKS_JUDUL_BUKU 50
