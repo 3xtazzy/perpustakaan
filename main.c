@@ -77,15 +77,32 @@ void menu(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
   scanf("%*[^\n]");
   fflush(stdin);
-  printf("\nMenu program \n");
-  printf("1. Menambahkan buku\n");
-  printf("2. Menghapus buku\n");
-  printf("3. Mencari buku\n");
-  printf("4. Melihat semua buku\n");
-  printf("5. Peminjaman\n");
-  printf("6. Pengembalian\n");
-  printf("7. Kembali\n");
-  printf("Masukan pilihan: ");
+	  
+  int b;
+  char j_menu[50] = "|>>> MENU PROGRAM <<<|";
+  char j_pilihan[25] = "Masukan Pilihan : ";
+  printf("\n\n\t");
+  for(b=0;b<22;b++){
+    Sleep(50);
+    printf("%c", j_menu[b]);
+
+  }
+  printf("\n\n");
+  printf("\t\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n");
+  printf("\t\xB2 1. Menambahkan buku    \xB2\n");
+  printf("\t\xB2 2. Menghapus buku      \xB2\n");
+  printf("\t\xB2 3. Mencari buku        \xB2\n");
+  printf("\t\xB2 4. Melihat semua buku  \xB2\n");
+  printf("\t\xB2 5. Peminjaman          \xB2\n");
+  printf("\t\xB2 6. Pengembalian        \xB2\n");
+  printf("\t\xB2 7. Kembali             \xB2\n");
+  printf("\t\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+  printf("\n\n\t");
+  for(b=0;b<18;b++){
+    Sleep(50);
+    printf("%c", j_pilihan[b]);
+
+  }
   scanf("%i", & pilihan);
   fflush(stdin);
 
