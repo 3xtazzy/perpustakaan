@@ -9,6 +9,7 @@
 #define MAKS_JENIS_BUKU 50
 #define MAKS_JUDUL_BUKU 50
 #define MAKS_NAMA_PENULIS 50
+#define MAKS_PEMINJAMAN 50
 #define MAKS_USER 20
 #define MAKS_PASS 20
 
@@ -22,6 +23,13 @@ typedef struct Buku {
   float harga;
 }
 Buku;
+
+typedef struct Bukup{
+  int kodep_buku;
+  char judulp_buku[MAKS_JUDUL_BUKU];
+  char batas[MAKS_PEMINJAMAN];
+}
+Bukup;
 
 void login(void) {
   int j;
@@ -96,7 +104,10 @@ void menu(void) {
     printf("\t\xB2 2. Menghapus buku      \xB2\n");
     printf("\t\xB2 3. Mencari buku        \xB2\n");
     printf("\t\xB2 4. Melihat semua buku  \xB2\n");
-    printf("\t\xB2 5. Kembali             \xB2\n");
+    printf("\t\xB2 5. Peminjaman          \xB2\n");
+    printf("\t\xB2 6. Buku yang dipinjam  \xB2\n");
+    printf("\t\xB2 7. Pengembalian        \xB2\n");
+    printf("\t\xB2 8. Kembali             \xB2\n");
     printf("\t\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
     printf("\n\n\t");
     for (b = 0; b < 18; b++) {
@@ -121,13 +132,23 @@ void menu(void) {
       lihat_buku();
       break;
     case 5:
+      peminjaman();
+      break;
+    case 6:
+      lihatp_buku();
+      break;
+    case 7:
+      pengembalian();
+      break;
+    case 8:
       exit(0);
       break;
     default:
       printf("Masukan input yang benar!");
     }
-  } while (pilihan != 7);
+  } while (pilihan != 8);
 }
+
 void tambah_buku(void) {
   Buku tambahBuku = {
     0
@@ -173,7 +194,9 @@ void tambah_buku(void) {
   getchar();
   system("cls");
 }
+
 void delete_buku(void) {
+  system("cls");
   printf("\t\t\t===========================================================================");
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
@@ -220,6 +243,7 @@ void delete_buku(void) {
   getchar();
   system("cls");
 }
+
 void cari_buku(void) {
   system("cls");
   int ketemu = 0;
@@ -266,6 +290,7 @@ void cari_buku(void) {
   getchar();
   system("cls");
 }
+
 void lihat_buku(void) {
   system("cls");
   printf("\t\t\t===========================================================================");
@@ -301,6 +326,132 @@ void lihat_buku(void) {
   if (!ketemu) {
     printf("\n\t\t\tNo Record");
   }
+  printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
+  fflush(stdin);
+  getchar();
+  system("cls");
+}
+
+void peminjaman(void){
+  Bukup peminjaman = {
+    0
+  }; //Memanggil ke struct ke fungsi
+  FILE * filePointer; //filepointer
+  filePointer = fopen("Bukup.bin", "ab+");
+
+  system("cls");
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                   <<< Add A New Book To Borrow Menu >>>                    ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+
+  //Fungsi nambahin buku
+  printf("\nMasukan detail buku dibawah...\n");
+  printf("Kode buku         :");
+  fflush(stdin);
+  scanf("%u", & peminjaman.kodep_buku);
+  printf("Nama buku         :");
+  fflush(stdin);
+  fgets(peminjaman.judulp_buku, MAKS_JUDUL_BUKU, stdin);
+  printf("Batas Peminjaman  :");
+  fflush(stdin);
+  fgets(peminjaman.batas, MAKS_PEMINJAMAN, stdin);
+
+  //Write ke file
+  fwrite( & peminjaman, sizeof(peminjaman), 1, filePointer);
+  fclose(filePointer);
+  printf("Buku sudah ditambahkan ke database peminjaman\n");
+  printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
+  fflush(stdin);
+  getchar();
+  system("cls");
+}
+
+void lihatp_buku(void){
+  system("cls");
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                      <<< Menu Lihat Buku Dipinjam >>>                      ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+
+  //Fungsi lihat buku yang dipinjam
+  int ketemu = 0;
+  char judulp_buku[MAKS_JUDUL_BUKU] = {
+    0
+  };
+  Bukup peminjaman = {
+    0
+  }; //Memanggil ke struct ke fungsi
+  FILE * filePointer;
+  filePointer = fopen("Bukup.bin", "rb");
+  while (fread( & peminjaman, sizeof(peminjaman), 1, filePointer)) {
+    printf("\n\t\t\tKode Buku        = %u", peminjaman.kodep_buku);
+    printf("\n\t\t\tNama Buku        = %s", peminjaman.judulp_buku);
+    printf("\t\t\tBatas Peminjaman = %s", peminjaman.batas);
+    printf("\n\t\t\t");
+    ketemu = 1;
+  }
+  fclose(filePointer);
+  if (!ketemu) {
+    printf("\n\t\t\tNo Record");
+  }
+  printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
+  fflush(stdin);
+  getchar();
+  system("cls");
+}
+
+void pengembalian(void){
+  system("cls");
+  printf("\t\t\t===========================================================================");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t------------   | PROGRAM PERPUSTAKAAN UNIVERSITAS UDAYANA  |   ------------ ");
+  printf("\n\t\t\t------------                                                   ------------ ");
+  printf("\n\t\t\t=========================================================================== ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+  printf("\n\t\t\t                         <<< Delete Book Menu >>>                           ");
+  printf("\n\t\t\t--------------------------------------------------------------------------- ");
+
+  //Fungsi delete buku
+  int ketemu = 1, bukup = 0;
+  FILE * filePointer;
+  FILE * tempfP;
+  Bukup peminjaman = {
+    0
+  }; //Memanggil ke struct ke fungsi
+  filePointer = fopen("Bukup.bin", "rb");
+  tempfP = fopen("temp.bin", "wb");
+
+  printf("\n\t\t\tMasukan Kode Buku yang sudah dikembalikan:");
+  fflush(stdin);
+  scanf(" %d", & bukup);
+
+  while (fread( & peminjaman, sizeof(peminjaman), 1, filePointer)) {
+    if (peminjaman.kodep_buku != bukup) {
+      fwrite( & peminjaman, sizeof(peminjaman), 1, tempfP);
+    } else {
+      ketemu = 0;
+    }
+  }
+  if (ketemu != '1') {
+    printf("\n\t\t\tBuku telah dikembalikan");
+    getchar();
+  } else {
+    printf("\n\t\t\tBuku tidak ditemukan");
+    getchar();
+  }
+  fclose(filePointer);
+  fclose(tempfP);
+  remove("Bukup.bin");
+  rename("temp.bin", "Bukup.bin");
   printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
   fflush(stdin);
   getchar();
