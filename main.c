@@ -163,32 +163,32 @@ void tambah_buku(void) {
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                        <<< Add New Book Menu >>>                           ");
+  printf("\n\t\t\t                         <<< Menu Tambah Buku >>>                           ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi nambahin buku
-  printf("\nMasukan detail buku dibawah...\n");
-  printf("Kode buku   :");
+  printf("\n\t\t\tMasukan detail buku dibawah...\n");
+  printf("\t\t\tKode buku   :");
   fflush(stdin);
   scanf("%u", & tambahBuku.kode_buku);
-  printf("Nama buku   :");
+  printf("\t\t\tNama buku   :");
   fflush(stdin);
   fgets(tambahBuku.judul_buku, MAKS_JUDUL_BUKU, stdin);
-  printf("Penulis buku:");
+  printf("\t\t\tPenulis buku:");
   fflush(stdin);
   fgets(tambahBuku.penulis, MAKS_NAMA_PENULIS, stdin);
-  printf("Jenis Buku  :");
+  printf("\t\t\tJenis Buku  :");
   fflush(stdin);
   fgets(tambahBuku.jenis_buku, MAKS_JENIS_BUKU, stdin);
-  printf("Halaman     :");
+  printf("\t\t\tHalaman     :");
   scanf("%u", & tambahBuku.halaman);
-  printf("Harga       :");
+  printf("\t\t\tHarga       :");
   scanf("%f", & tambahBuku.harga);
 
   //Write ke file
   fwrite( & tambahBuku, sizeof(tambahBuku), 1, filePointer);
   fclose(filePointer);
-  printf("Buku sudah ditambahkan ke database\n");
+  printf("\n\t\t\tBuku sudah ditambahkan ke database\n");
   printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
   fflush(stdin);
   getchar();
@@ -203,7 +203,7 @@ void delete_buku(void) {
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                         <<< Delete Book Menu >>>                           ");
+  printf("\n\t\t\t                          <<< Menu Hapus Buku >>>                           ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi delete buku
@@ -253,7 +253,7 @@ void cari_buku(void) {
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                      <<< Search For Book Menu >>>                          ");
+  printf("\n\t\t\t                          <<< Menu Cari Buku >>>                            ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi cari buku
@@ -346,25 +346,25 @@ void peminjaman(void){
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                   <<< Add A New Book To Borrow Menu >>>                    ");
+  printf("\n\t\t\t                          <<< Menu Peminjaman >>>                           ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi nambahin buku
-  printf("\nMasukan detail buku dibawah...\n");
-  printf("Kode buku         :");
+  printf("\n\t\t\tMasukan detail buku dibawah...\n");
+  printf("\t\t\tKode buku         :");
   fflush(stdin);
   scanf("%u", & peminjaman.kodep_buku);
-  printf("Nama buku         :");
+  printf("\t\t\tNama buku         :");
   fflush(stdin);
   fgets(peminjaman.judulp_buku, MAKS_JUDUL_BUKU, stdin);
-  printf("Batas Peminjaman  :");
+  printf("\t\t\tBatas Peminjaman  :");
   fflush(stdin);
   fgets(peminjaman.batas, MAKS_PEMINJAMAN, stdin);
 
   //Write ke file
   fwrite( & peminjaman, sizeof(peminjaman), 1, filePointer);
   fclose(filePointer);
-  printf("Buku sudah ditambahkan ke database peminjaman\n");
+  printf("\n\t\t\tBuku sudah ditambahkan ke database peminjaman\n");
   printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
   fflush(stdin);
   getchar();
@@ -417,10 +417,10 @@ void pengembalian(void){
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                         <<< Delete Book Menu >>>                           ");
+  printf("\n\t\t\t                         <<< Menu Pengembalian >>>                          ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
-  //Fungsi delete buku
+  //Fungsi menghapus buku yang dikembalikan
   int ketemu = 1, bukup = 0;
   FILE * filePointer;
   FILE * tempfP;
