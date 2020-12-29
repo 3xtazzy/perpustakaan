@@ -10,6 +10,7 @@
 #define MAKS_JUDUL_BUKU 50
 #define MAKS_NAMA_PENULIS 50
 #define MAKS_PEMINJAMAN 50
+#define MAKS_NAMA_PEMINJAM 50
 #define MAKS_USER 20
 #define MAKS_PASS 20
 
@@ -28,6 +29,8 @@ typedef struct Bukup{
   int kodep_buku;
   char judulp_buku[MAKS_JUDUL_BUKU];
   char batas[MAKS_PEMINJAMAN];
+  char nama_peminjam[MAKS_NAMA_PEMINJAM];
+  int nim;
 }
 Bukup;
 
@@ -353,7 +356,7 @@ void peminjaman(void){
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                   <<< Add A New Book To Borrow Menu >>>                    ");
+  printf("\n\t\t\t             		      <<< Menu Peminjaman >>>         	              ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi nambahin buku
