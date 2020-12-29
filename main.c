@@ -336,8 +336,15 @@ void peminjaman(void){
   Bukup peminjaman = {
     0
   }; //Memanggil ke struct ke fungsi
+  Buku tambahBuku = {
+	0
+  }; //Memanggil struct buku
   FILE * filePointer; //filepointer
+  FILE * fPBuku;
   filePointer = fopen("Bukup.bin", "ab+");
+  fPBuku = fopen("Buku.bin", "rb");
+  int ketemu = 0;
+  char judulBuku[MAKS_JUDUL_BUKU];
 
   system("cls");
   printf("\t\t\t===========================================================================");
@@ -346,25 +353,32 @@ void peminjaman(void){
   printf("\n\t\t\t------------                                                   ------------ ");
   printf("\n\t\t\t=========================================================================== ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
-  printf("\n\t\t\t                          <<< Menu Peminjaman >>>                           ");
+  printf("\n\t\t\t                   <<< Add A New Book To Borrow Menu >>>                    ");
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi nambahin buku
-  printf("\n\t\t\tMasukan detail buku dibawah...\n");
-  printf("\t\t\tKode buku         :");
-  fflush(stdin);
-  scanf("%u", & peminjaman.kodep_buku);
-  printf("\t\t\tNama buku         :");
-  fflush(stdin);
-  fgets(peminjaman.judulp_buku, MAKS_JUDUL_BUKU, stdin);
-  printf("\t\t\tBatas Peminjaman  :");
-  fflush(stdin);
-  fgets(peminjaman.batas, MAKS_PEMINJAMAN, stdin);
+  printf("\n\t\t\tMasukan detail peminjaman dibawah...\n");
 
-  //Write ke file
-  fwrite( & peminjaman, sizeof(peminjaman), 1, filePointer);
+      printf("\t\t\tNama peminjam :");
+      fgets(peminjaman.nama_peminjam, MAKS_NAMA_PEMINJAM, stdin);
+      printf("\t\t\tNIM peminjam:");
+      scanf("%d", & peminjaman.nim);
+      printf("\t\t\tKode buku   :");
+      fflush(stdin);
+      scanf("%u", & peminjaman.kodep_buku);
+      printf("\t\t\tJudul buku  :");
+      fflush(stdin);
+      fgets(peminjaman.judulp_buku, MAKS_JUDUL_BUKU, stdin);
+      printf("\t\t\tBatas peminjaman (Tanggal/Bulan/Tahun) :");
+      fflush(stdin);
+      fgets(peminjaman.batas, MAKS_PEMINJAMAN, stdin);
+
+      //Write ke file
+      fwrite( & peminjaman, sizeof(peminjaman), 1, filePointer);
+
   fclose(filePointer);
-  printf("\n\t\t\tBuku sudah ditambahkan ke database peminjaman\n");
+  fclose(fPBuku);
+  printf("\t\t\tDetail peminjaman sudah ditambahkan ke database peminjaman\n");
   printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
   fflush(stdin);
   getchar();
