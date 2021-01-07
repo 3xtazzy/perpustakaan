@@ -260,36 +260,38 @@ void cari_buku(void) {
   printf("\n\t\t\t--------------------------------------------------------------------------- ");
 
   //Fungsi cari buku
-  Buku tambahBuku = {
+ Buku tambahBuku = {
     0
   }; //Memanggil ke struct ke fungsi
   char judulBuku[MAKS_JUDUL_BUKU];
   FILE * filePointer; //filepointer
   filePointer = fopen("Buku.bin", "rb");
-  printf("\n");
-  printf("\n\t\t\tMasukkan nama buku untuk dicari : ");
-  fflush(stdin);
-  fgets(judulBuku, MAKS_JUDUL_BUKU, stdin);
+  if(filePointer == NULL)
+    {
+        printf("\n\t\t\tFile belum terbuka\n");
+        exit(0);
+    }
 
-  while (fread( & tambahBuku, sizeof(tambahBuku), 1, filePointer)) {
-    if (!strcmp (judulBuku, tambahBuku.judul_buku)) {
-      ketemu = 1;
-      break;
+  printf("\n\t\t\tMasukkan nama buku untuk dicari :");
+  fflush(stdin);
+  fgets(judulBuku,MAKS_JUDUL_BUKU, stdin);
+
+  while(fread(&tambahBuku, sizeof(tambahBuku),1, filePointer)==1){
+    if(strcmp(tambahBuku.judul_buku,judulBuku)== 0){
+        ketemu++;
+        printf("\n\t\t\tKode Buku    : %u\n", tambahBuku.kode_buku);
+        printf("\t\t\tJenis buku     : %s", tambahBuku.jenis_buku);
+        printf("\t\t\tPenulis Buku   : %s", tambahBuku.penulis);
+        printf("\t\t\tHalaman        : %d\n", tambahBuku.halaman);
+        printf("\t\t\tHarga          : Rp%.3f\n", tambahBuku.harga);
     }
   }
-  if (ketemu == 0) {
-    printf("\n\t\t\tKode Buku = %u", tambahBuku.kode_buku);
-    printf("\n\t\t\tNama Buku = %s", tambahBuku.judul_buku);
-    printf("\t\t\tPenulis = %s", tambahBuku.penulis);
-    printf("\t\t\tJenis Buku = %s", tambahBuku.jenis_buku);
-    printf("\t\t\tHalaman = %u", tambahBuku.halaman);
-    printf("\n\t\t\tHarga = Rp%.3f", tambahBuku.harga);
-  } else {
-    printf("\n\t\t\tBuku tidak ditemukan\n");
-  }
+    if(ketemu == 0){
+        printf("\t\t\tBuku tidak ditemukan");
+    }
+
   fclose(filePointer);
   printf("\n\t\t\tTekan tombol enter untuk kembali ke menu utama");
-  fflush(stdin);
   getchar();
   system("cls");
 }
