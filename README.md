@@ -8,3 +8,7 @@ Berikut adalah mekanisme atau alur dari program sistem perpustakaan :
 3. Setelah memasukkan username dan password, lalu program akan menampilkan menu yang dapat dipilih oleh pengguna.
 4. Ketika sudah memilih menu, maka program akan masuk ke menu tersebut dan pengguna dapat menginput data yang diminta.
 5. Setelah selesai menginput, maka program akan kembali ke pilihan menu.
+
+Cara penggunaan:
+1. Download program yang sudah di compile (main.exe)
+2. Buka program, dan lakukan mekanisme penggunaan program diatas
