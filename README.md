@@ -4,7 +4,7 @@ Program sistem perpustakaan adalah program yang memudahkan pendataan secara komp
  
 Berikut adalah mekanisme atau alur dari program sistem perpustakaan :
 1. Pengguna memasuki menu login pada program sistem perpustakaan.
-2. Pengguna diharuskan untuk memasukan username dan password. Dalam hal ini program sistem perpustakaan menetapkan username : “apausernya” dan password : “apapassnya”.
+2. Pengguna diharuskan untuk memasukan username dan password. Dalam hal ini program sistem perpustakaan menetapkan username : “admin” dan password : “apapassnya”.
 3. Setelah memasukkan username dan password, lalu program akan menampilkan menu yang dapat dipilih oleh pengguna.
 4. Ketika sudah memilih menu, maka program akan masuk ke menu tersebut dan pengguna dapat menginput data yang diminta.
 5. Setelah selesai menginput, maka program akan kembali ke pilihan menu.
